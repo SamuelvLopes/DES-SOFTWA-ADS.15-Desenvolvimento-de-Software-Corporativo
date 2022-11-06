@@ -5,9 +5,6 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 /**
  *
@@ -55,10 +52,7 @@ public class TesteJPA {
         c.setEmail("fulano@gmail.com");
         c.setCnh("41257489561");
         
-
     }
-    
-    
     
 }
 

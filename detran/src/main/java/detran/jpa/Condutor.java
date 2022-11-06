@@ -41,8 +41,6 @@ public class Condutor extends Usuario implements Serializable  {
     @Column(name = "TXT_LOCAL")
     private String local;
 
-
-
     
     public String getCnh() {
         return cnh;
@@ -82,66 +80,6 @@ public class Condutor extends Usuario implements Serializable  {
 
     public void setLocal(String local) {
         this.local = local;
-    }
-
-   @Override
-    public Long getId() {
-        return id;
-    }
-
-   @Override
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-   @Override
-    public String getNome() {
-        return nome;
-    }
-
-   
-    @Override
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-   @Override
-    public String getEmail() {
-        return email;
-    }
-
-    /**
-     *
-     * @param email
-     */
-    @Override
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-   @Override
-    public Collection<String> getTelefones() {
-        return telefones;
-    }
-
-   @Override
-    public void setTelefones(Collection<String> telefones) {
-        this.telefones = telefones;
-    }
-
-    /**
-     *
-     * @return
-     */
-    @Override
-    public String getCpf() {
-        return cpf;
-    }
-
-   @Override
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
-    }
-    
+    } 
     
 }

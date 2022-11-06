@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 import java.util.List;
 
 @Entity
-@Table(name= "Tb_Veiculo")
+@Table(name= "TB_VEICULO")
 public class Veiculo implements Serializable{
     
     @Id 
@@ -118,6 +118,9 @@ public class Veiculo implements Serializable{
         this.condutor =  condutor;
     }
 
-   
+    @Override
+    public String toString() {
+        return "Veiculo{" + "placa=" + placa + ", tipo_veiculo=" + tipo_veiculo + ", fabricante=" + fabricante + ", modelo=" + modelo + ", chassi=" + chassi + ", ano_veiculo=" + ano_veiculo + ", proprietario=" + proprietario + ", cor=" + cor + ", condutor=" + condutor + '}';
+    }
     
 }
