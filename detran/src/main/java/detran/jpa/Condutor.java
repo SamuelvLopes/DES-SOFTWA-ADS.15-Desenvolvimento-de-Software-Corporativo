@@ -41,8 +41,7 @@ public class Condutor extends Usuario implements Serializable  {
     private String pontuacao;
     @Column(name = "TXT_LOCAL")
     private String local;
-    @Column(name = "TXT_CATEGORIA_CNH", nullable = false, length = 20)
-    private CategoriaCnh tipo;
+    
 
     
     public String getCnh() {
@@ -85,12 +84,6 @@ public class Condutor extends Usuario implements Serializable  {
         this.local = local;
     } 
 
-    public CategoriaCnh getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(CategoriaCnh tipo) {
-        this.tipo = tipo;
-    }
+   
     
 }
