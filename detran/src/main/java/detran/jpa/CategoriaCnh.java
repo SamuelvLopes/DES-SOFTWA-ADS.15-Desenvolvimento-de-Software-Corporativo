@@ -8,7 +8,7 @@ package detran.jpa;
  *
  * @author root
  */
-public enum Categoria_Cnh {
+public enum CategoriaCnh {
     
     ACC, A, B, C , E , D;
     
