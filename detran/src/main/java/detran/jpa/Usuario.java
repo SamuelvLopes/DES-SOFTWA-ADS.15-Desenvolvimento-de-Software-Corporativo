@@ -10,6 +10,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.DiscriminatorColumn;
 import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -42,6 +43,9 @@ public abstract class Usuario implements Serializable {
     
     @Column(name = "TXT_EMAIL")
     protected String email;
+    
+    @Embedded
+    private Endereco endereco;
     
     @ElementCollection
     @CollectionTable(name = "TB_TELEFONE",
@@ -76,6 +80,14 @@ public abstract class Usuario implements Serializable {
         this.email = email;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
    public Collection<String> getTelefones() {
         return telefones;
     }
@@ -94,11 +106,13 @@ public abstract class Usuario implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 59 * hash + Objects.hashCode(this.id);
-        hash = 59 * hash + Objects.hashCode(this.nome);
-        hash = 59 * hash + Objects.hashCode(this.email);
-        hash = 59 * hash + Objects.hashCode(this.telefones);
+        int hash = 3;
+        hash = 97 * hash + Objects.hashCode(this.id);
+        hash = 97 * hash + Objects.hashCode(this.nome);
+        hash = 97 * hash + Objects.hashCode(this.email);
+        hash = 97 * hash + Objects.hashCode(this.endereco);
+        hash = 97 * hash + Objects.hashCode(this.telefones);
+        hash = 97 * hash + Objects.hashCode(this.cpf);
         return hash;
     }
 
@@ -126,11 +140,14 @@ public abstract class Usuario implements Serializable {
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
+        if (!Objects.equals(this.endereco, other.endereco)) {
+            return false;
+        }
         return Objects.equals(this.telefones, other.telefones);
     }
 
     @Override
     public String toString() {
-        return "Usuario{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", telefones=" + telefones + ", cpf=" + cpf + '}';
+        return "Usuario{" + "id=" + id + ", nome=" + nome + ", email=" + email + ", endereco=" + endereco + ", telefones=" + telefones + ", cpf=" + cpf + '}';
     }
 }
