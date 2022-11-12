@@ -1,4 +1,6 @@
-/home/dev/detran_detran/detran/src/main/java/detran/jpa/Condutor.java
-/home/dev/detran_detran/detran/src/main/java/detran/jpa/Veiculo.java
-/home/dev/detran_detran/detran/src/main/java/detran/jpa/Usuario.java
-/home/dev/detran_detran/detran/src/main/java/detran/jpa/TesteJPA.java
+/home/dev/projetos/DES-SOFTWA-ADS.15-Desenvolvimento-de-Software-Corporativo/detran/src/main/java/detran/jpa/Usuario.java
+/home/dev/projetos/DES-SOFTWA-ADS.15-Desenvolvimento-de-Software-Corporativo/detran/src/main/java/detran/jpa/Multa.java
+/home/dev/projetos/DES-SOFTWA-ADS.15-Desenvolvimento-de-Software-Corporativo/detran/src/main/java/detran/jpa/TesteJPA.java
+/home/dev/projetos/DES-SOFTWA-ADS.15-Desenvolvimento-de-Software-Corporativo/detran/src/main/java/detran/jpa/Condutor.java
+/home/dev/projetos/DES-SOFTWA-ADS.15-Desenvolvimento-de-Software-Corporativo/detran/src/main/java/detran/jpa/Autuador.java
+/home/dev/projetos/DES-SOFTWA-ADS.15-Desenvolvimento-de-Software-Corporativo/detran/src/main/java/detran/jpa/Veiculo.java

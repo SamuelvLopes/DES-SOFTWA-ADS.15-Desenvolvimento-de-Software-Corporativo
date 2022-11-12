@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import java.io.Serializable;
@@ -40,6 +41,8 @@ public class Condutor extends Usuario implements Serializable  {
     private String pontuacao;
     @Column(name = "TXT_LOCAL")
     private String local;
+    @Column(name = "TXT_CATEGORIA_CNH", nullable = false, length = 20)
+    private Categoria_Cnh tipo;
 
     
     public String getCnh() {
@@ -81,5 +84,13 @@ public class Condutor extends Usuario implements Serializable  {
     public void setLocal(String local) {
         this.local = local;
     } 
+
+    public Categoria_Cnh getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(Categoria_Cnh tipo) {
+        this.tipo = tipo;
+    }
     
 }
