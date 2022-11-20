@@ -83,7 +83,5 @@ public class Condutor extends Usuario implements Serializable  {
     public void setLocal(String local) {
         this.local = local;
     } 
-
    
-    
 }

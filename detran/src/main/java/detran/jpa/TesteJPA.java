@@ -51,7 +51,7 @@ public class TesteJPA {
         c.setNome("Fulano da Silva");
         c.setEmail("fulano@gmail.com");
         c.setCnh("41257489561");
-        c.setTipo(CategoriaCnh.ACC);
+//        c.setTipo(CategoriaCnh.ACC);
         
     }
     

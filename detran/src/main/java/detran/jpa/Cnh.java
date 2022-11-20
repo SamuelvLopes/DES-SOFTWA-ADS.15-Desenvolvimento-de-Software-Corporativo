@@ -123,9 +123,5 @@ public class Cnh {
         }
         return Arrays.equals(this.foto, other.foto);
     }
-    
-    
-    
-    
-    
+       
 }
