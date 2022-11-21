@@ -4,10 +4,19 @@
  */
 package detran.jpa;
 
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
+
 /**
  *
  * @author danielcardoso
  */
-public class EnderecoTeste extends Teste {
+@RunWith(Suite.class)
+@Suite.SuiteClasses({
+    detran.jpa.AutuadorTeste.class, 
+    detran.jpa.CnhTeste.class,
+    detran.jpa.CondutorTeste.class
+})
+public class TesteSuite {
     
 }
