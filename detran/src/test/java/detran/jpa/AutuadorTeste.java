@@ -23,6 +23,22 @@ public class AutuadorTeste extends Teste {
         Assert.assertNotNull(autuador.getId());
     }
     
+//    @Test
+//    public void consultarAutuador() {
+//        Autuador Autuador = em.find(Autuador.class, 1L);
+//
+//        Assert.assertNotNull(Autuador);
+//        
+//        Assert.assertEquals(String.valueOf("autuador.da.silva@gmail.com"),
+//                Autuador.getEmail());
+//        
+//        Assert.assertEquals(String.valueOf("526.594.890-25"),
+//                Autuador.getCpf());
+//        
+//        Assert.assertEquals(String.valueOf("Detran"),
+//                Autuador.getOrgao());
+//    }
+//    
     public Autuador criarAutuador() {
         
         Autuador autuador = new Autuador();

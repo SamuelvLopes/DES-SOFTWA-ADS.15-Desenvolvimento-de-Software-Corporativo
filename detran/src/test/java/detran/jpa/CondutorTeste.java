@@ -31,7 +31,7 @@ public class CondutorTeste extends Teste {
         Assert.assertNotNull(condutor.getId());
     }
     
-    private static Condutor criarCondutor() {
+    public static Condutor criarCondutor() {
         Condutor condutor = new Condutor();
         condutor.setNome("Fulano da Silva");
         condutor.setEmail("fulano@gmail.com");

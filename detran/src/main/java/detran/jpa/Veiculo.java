@@ -17,7 +17,7 @@ import java.util.List;
 
 @Entity
 @Table(name= "TB_VEICULO")
-public class Veiculo implements Serializable{
+public class Veiculo implements Serializable {
     
     @Id 
     private String placa;

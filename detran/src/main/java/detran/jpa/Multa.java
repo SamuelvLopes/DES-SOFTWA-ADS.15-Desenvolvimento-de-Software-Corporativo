@@ -28,7 +28,7 @@ public class Multa {
     private long id;
     
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID_VEICULO_PLACA", referencedColumnName = "ID")
+    @JoinColumn(name = "ID_VEICULO_PLACA", referencedColumnName = "placa")
     private Veiculo veiculo;
     
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
