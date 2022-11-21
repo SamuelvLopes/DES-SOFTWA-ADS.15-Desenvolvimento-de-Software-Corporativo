@@ -5,12 +5,14 @@
 package detran.jpa;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Embeddable;
 import java.io.Serializable;
 
 /**
  *
  * @author danielcardoso
  */
+@Embeddable
 public class Endereco implements Serializable {
 
     @Column(name = "END_TXT_LOGRADOURO", length = 150, nullable = false)

@@ -12,6 +12,7 @@ import jakarta.persistence.DiscriminatorType;
 import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -20,6 +21,7 @@ import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
 
 /**
@@ -45,11 +47,11 @@ public abstract class Usuario implements Serializable {
     protected String email;
     
     @Embedded
-    private Endereco endereco;
+    protected Endereco endereco;
     
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.LAZY)
     @CollectionTable(name = "TB_TELEFONE",
-            joinColumns = @JoinColumn(name = "ID_USUARIO"))
+            joinColumns = @JoinColumn(name = "ID_USUARIO", nullable = false))
     @Column(name = "TXT_NUM_TELEFONE")
     protected Collection<String> telefones;
     
@@ -88,12 +90,15 @@ public abstract class Usuario implements Serializable {
         this.endereco = endereco;
     }
 
-   public Collection<String> getTelefones() {
+    public Collection<String> getTelefones() {
         return telefones;
     }
 
-    public void setTelefones(Collection<String> telefones) {
-        this.telefones = telefones;
+    public void addTelefone(String telefone) {
+        if (telefones == null) {
+            telefones = new HashSet<>();
+        }
+        telefones.add(telefone);
     }
 
     public String getCpf() {

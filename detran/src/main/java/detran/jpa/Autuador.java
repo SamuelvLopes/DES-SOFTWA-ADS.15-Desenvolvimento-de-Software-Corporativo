@@ -17,7 +17,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "TB_AUTUADOR")
-@DiscriminatorValue(value= "a")
+@DiscriminatorValue(value= "A")
 @PrimaryKeyJoinColumn(name="ID_USUARIO", referencedColumnName = "id")
 public class Autuador extends Usuario implements Serializable{
     
@@ -33,8 +33,6 @@ public class Autuador extends Usuario implements Serializable{
     private String cidade;
     @Column(name = "TXT_ESTADO")
     private String estado;
-    @Column(name = "TXT_ADMISSAO")
-    private String admissao;
 
     public String getOrgao() {
         return orgao;
@@ -68,17 +66,9 @@ public class Autuador extends Usuario implements Serializable{
         this.estado = estado;
     }
 
-    public String getAdmissao() {
-        return admissao;
-    }
-
-    public void setAdmissao(String admissao) {
-        this.admissao = admissao;
-    }
-
     @Override
     public String toString() {
-        return "Autuador{" + "orgao=" + orgao + ", zona_atuacao=" + zona_atuacao + ", cidade=" + cidade + ", estado=" + estado + ", admissao=" + admissao + '}';
+        return "Autuador{" + "orgao=" + orgao + ", zona_atuacao=" + zona_atuacao + ", cidade=" + cidade + ", estado=" + estado + '}';
     }
     
 }

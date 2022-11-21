@@ -17,6 +17,7 @@ import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.SecondaryTable;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
@@ -26,13 +27,13 @@ import java.util.Objects;
  * @author root
  */
 @Entity
-@Table(name = "CNH")
+@Table(name = "TB_CNH")
 @SecondaryTable(name = "TB_FOTO_USUARIO",
         pkJoinColumns = {
             @PrimaryKeyJoinColumn(name = "id")}
 )
 @Access(AccessType.FIELD)
-public class Cnh {
+public class Cnh implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)    
     private Long id;  
