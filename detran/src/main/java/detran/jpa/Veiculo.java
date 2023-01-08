@@ -120,6 +120,13 @@ public class Veiculo implements Serializable {
     public void setCondutores(List<Condutor> condutor) {
         this.condutores =  condutor;
     }
+    
+    public boolean adicionarCondutor(Condutor condutor){
+        if (this.condutores != null) {
+            return this.condutores.add(condutor);
+        }
+        return false;
+    }
 
     @Override
     public int hashCode() {

@@ -10,10 +10,13 @@ import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -34,8 +37,10 @@ public class Condutor extends Usuario implements Serializable  {
     private String pontuacao;
     @Column(name = "TXT_LOCAL")
     private String local;
-    
-    
+    @OneToMany(mappedBy = "condutor", fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Multa> multas;
+
     public Cnh getCnh() {
         return cnh;
     }
@@ -68,6 +73,23 @@ public class Condutor extends Usuario implements Serializable  {
     public void setLocal(String local) {
         this.local = local;
     } 
+
+    public List<Multa> getMultas() {
+        return multas;
+    }
+
+    public void setMultas(List<Multa> multas) {
+        this.multas = multas;
+    }
+    
+    public void adicionar(Multa multa) {
+        if (this.multas == null) {
+            this.multas = new ArrayList<>();
+        }
+
+        this.multas.add(multa);
+        multa.setCondutor(this);
+    }
     
     @Override
     public int hashCode() {
