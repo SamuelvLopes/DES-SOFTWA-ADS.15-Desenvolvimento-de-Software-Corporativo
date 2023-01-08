@@ -23,9 +23,8 @@ public class TesteJPA {
         
         Condutor c = criarCondutor();
         Veiculo v1 = new Veiculo();
-        v1.setPlaca("12344");
         
-        v1.setCondutor(Arrays.asList(c));
+        v1.setCondutores(Arrays.asList(c));
         
         EntityManagerFactory emf = null;
         EntityManager em = null;

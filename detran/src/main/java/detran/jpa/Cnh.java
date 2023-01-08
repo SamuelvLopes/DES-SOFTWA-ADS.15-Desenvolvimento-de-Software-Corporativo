@@ -9,6 +9,8 @@ import jakarta.persistence.AccessType;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,9 +20,7 @@ import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.SecondaryTable;
 import jakarta.persistence.Table;
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.Objects;
 
 /**
  *
@@ -39,6 +39,7 @@ public class Cnh implements Serializable {
     private Long id;  
     @OneToOne(mappedBy = "Cnh", optional = false, fetch = FetchType.LAZY)
     private Condutor condutor;
+    @Enumerated(EnumType.STRING) 
     @Column(name = "TXT_CATEGORIA_CNH", nullable = false, length = 20)
     private CategoriaCnh tipo;
     @Column(name = "DT_VALIDADE")
@@ -89,40 +90,22 @@ public class Cnh implements Serializable {
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.condutor);
-        hash = 79 * hash + Objects.hashCode(this.tipo);
-        hash = 79 * hash + Objects.hashCode(this.dataValidade);
-        hash = 79 * hash + Arrays.hashCode(this.foto);
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
+    public boolean equals(Object object) {
+        if (!(object instanceof Cnh)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Cnh other = (Cnh) obj;
-        if (!Objects.equals(this.id, other.id)) {
-            return false;
-        }
-        if (!Objects.equals(this.condutor, other.condutor)) {
-            return false;
-        }
-        if (this.tipo != other.tipo) {
-            return false;
-        }
-        if (!Objects.equals(this.dataValidade, other.dataValidade)) {
-            return false;
-        }
-        return Arrays.equals(this.foto, other.foto);
+        Cnh other = (Cnh) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
-       
+
+    @Override
+    public String toString() {
+        return "exemplo.jpa.Cnh[ id=" + id + " ]";
+    }
 }

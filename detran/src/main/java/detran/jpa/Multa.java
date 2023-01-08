@@ -13,6 +13,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -21,14 +22,14 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "TB_MULTA")
-public class Multa {
+public class Multa implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "ID_VEICULO_PLACA", referencedColumnName = "placa")
+    @JoinColumn(name = "ID_VEICULO_PLACA", referencedColumnName = "ID")
     private Veiculo veiculo;
     
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
@@ -126,10 +127,25 @@ public class Multa {
     public void setLocal(String local) {
         this.local = local;
     }
+    
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Multa)) {
+            return false;
+        }
+        Multa other = (Multa) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+    }
 
     @Override
     public String toString() {
-        return "Multa{" + "id=" + id + ", veiculo=" + veiculo + ", condutor=" + condutor + ", autuador=" + autuador + ", data_multa=" + data_multa + ", valor=" + valor + ", descricao=" + descricao + ", infracao=" + infracao + ", local=" + local + '}';
-    }
-    
+        return "exemplo.jpa.Multa[ id=" + id + " ]";
+    } 
 }

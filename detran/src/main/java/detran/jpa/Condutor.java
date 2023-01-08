@@ -28,7 +28,7 @@ public class Condutor extends Usuario implements Serializable  {
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "ID_CNH", referencedColumnName = "ID")
     private Cnh cnh;
-    @Column(name = "TXT_OBSERVCAO")
+    @Column(name = "TXT_OBSERVACAO")
     private String observacao;
     @Column(name = "TXT_PONTUACAO")
     private String pontuacao;
@@ -68,5 +68,25 @@ public class Condutor extends Usuario implements Serializable  {
     public void setLocal(String local) {
         this.local = local;
     } 
-   
+    
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Condutor)) {
+            return false;
+        }
+        Condutor other = (Condutor) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
+    }
+
+    @Override
+    public String toString() {
+        return "exemplo.jpa.Condutor[ id=" + id + " ]";
+    }   
 }

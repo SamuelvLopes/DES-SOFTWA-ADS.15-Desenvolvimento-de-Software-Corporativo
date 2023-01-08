@@ -8,6 +8,8 @@ import jakarta.persistence.Column;
 import java.io.Serializable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -19,8 +21,9 @@ import java.util.List;
 @Table(name= "TB_VEICULO")
 public class Veiculo implements Serializable {
     
-    @Id 
-    private String placa;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
     
     @Column(name = "TXT_TIPO_VEICULO")
     private String tipo_veiculo;
@@ -39,19 +42,19 @@ public class Veiculo implements Serializable {
    
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="TB_VEICULO_CONDUTOR", joinColumns = {
-        @JoinColumn (name = "ID_VEICULO_PLACA")},
+        @JoinColumn (name = "ID_VEICULO")},
             inverseJoinColumns = {
                 @JoinColumn (name = "ID_VEICULO_CONDUTOR ")})
             
-    private List<Condutor> condutor;
+    private List<Condutor> condutores;
 
     
-    public String getPlaca() {
-        return placa;
+    public Long getId() {
+        return id;
     }
 
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTipo_veiculo() {
@@ -110,17 +113,33 @@ public class Veiculo implements Serializable {
         this.cor = cor;
     }
 
-    public List<Condutor> getCondutor() {
-        return condutor;
+    public List<Condutor> getCondutores() {
+        return condutores;
     }
 
-    public void setCondutor(List<Condutor> condutor) {
-        this.condutor =  condutor;
+    public void setCondutores(List<Condutor> condutor) {
+        this.condutores =  condutor;
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 0;
+        hash += (id != null ? id.hashCode() : 0);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object object) {
+        if (!(object instanceof Veiculo)) {
+            return false;
+        }
+        Veiculo other = (Veiculo) object;
+        return !((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id)));
     }
 
     @Override
     public String toString() {
-        return "Veiculo{" + "placa=" + placa + ", tipo_veiculo=" + tipo_veiculo + ", fabricante=" + fabricante + ", modelo=" + modelo + ", chassi=" + chassi + ", ano_veiculo=" + ano_veiculo + ", proprietario=" + proprietario + ", cor=" + cor + ", condutor=" + condutor + '}';
+        return "exemplo.jpa.Veiculo[ id=" + id + " ]";
     }
     
 }
