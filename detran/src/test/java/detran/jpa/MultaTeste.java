@@ -23,7 +23,7 @@ import org.junit.Test;
 public class MultaTeste extends Teste {
     
     @Test
-    public void persistirVeiculo() {
+    public void persistirMulta() {
         Multa multa = criarMulta();
 
         em.persist(multa);
@@ -32,41 +32,17 @@ public class MultaTeste extends Teste {
         Assert.assertNotNull(multa.getId());
     }
     
-    public Multa criarMulta() {
-        
-       Multa multa = new Multa();
-       
-       Veiculo veiculo = criarVeiculo();
-       
-       multa.setVeiculo(veiculo);
-       
-       Condutor condutor = criarCondutor();
-       multa.setCondutor(condutor);
-       
-       Autuador autuador = criarAutuador();
-       
-       multa.setAutuador(autuador);
-       
-       Calendar c = Calendar.getInstance();
-        c.set(Calendar.YEAR, 2025);
-        c.set(Calendar.MONTH, Calendar.FEBRUARY);
-        c.set(Calendar.DAY_OF_MONTH, 25);
-       multa.setData_multa( c.getTime());
-        multa.setValor(123);
-        multa.setDescricao("Estacionamento em local indevido");
-        multa.setInfracao("grave");
-        multa.setLocal("AV. Recife");
-        
-        return multa;
-    }
-    
     public static Condutor criarCondutor() {
         Condutor condutor = new Condutor();
+        condutor.setId(Long.valueOf(10));
         condutor.setNome("Fulano da Silva");
         condutor.setEmail("fulano@gmail.com");
         condutor.setCpf("534.585.764-45");
         condutor.addTelefone("(81) 3456-2525");
         condutor.addTelefone("(81) 9122-4528");
+        condutor.setLocal("Recife");
+        condutor.setObservacao("***");
+        condutor.setPontuacao("7");
         criarEndereco(condutor);
         criarCNH(condutor);
         
@@ -140,8 +116,7 @@ public class MultaTeste extends Teste {
     public Veiculo criarVeiculo() {
         
         Veiculo veiculo = new Veiculo();
-
-        veiculo.setPlaca("PFU1G29");
+        veiculo.setId(Long.valueOf(20));
         veiculo.setTipo_veiculo("Fox");
         veiculo.setFabricante("Volkswagen");
         veiculo.setModelo("4 portas");
@@ -150,8 +125,37 @@ public class MultaTeste extends Teste {
         veiculo.setProprietario("Ciclano da silva");
         veiculo.setCor("Preto");
         Condutor condutor = criarCondutor();
-        veiculo.setCondutor(Arrays.asList(condutor));
+        veiculo.adicionarCondutor(condutor);
         
         return veiculo;
     }
+    public Multa criarMulta() {
+        
+       Multa multa = new Multa();
+       
+       Veiculo veiculo = criarVeiculo();
+       
+       multa.setVeiculo(veiculo);
+       
+       Condutor condutor = criarCondutor();
+       multa.setCondutor(condutor);
+       
+       Autuador autuador = criarAutuador();
+       
+       multa.setAutuador(autuador);
+       
+       Calendar c = Calendar.getInstance();
+        c.set(Calendar.YEAR, 2025);
+        c.set(Calendar.MONTH, Calendar.FEBRUARY);
+        c.set(Calendar.DAY_OF_MONTH, 25);
+       multa.setData_multa( c.getTime());
+        multa.setValor(123);
+        multa.setDescricao("Estacionamento em local indevido");
+        multa.setInfracao("grave");
+        multa.setLocal("AV. Recife");
+        
+        return multa;
+    }
+    
+    
 }

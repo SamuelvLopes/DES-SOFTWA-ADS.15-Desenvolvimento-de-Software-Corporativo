@@ -15,7 +15,9 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({
     detran.jpa.AutuadorTeste.class, 
     detran.jpa.CnhTeste.class,
-    detran.jpa.CondutorTeste.class
+    detran.jpa.CondutorTeste.class,
+    detran.jpa.MultaTeste.class,
+    detran.jpa.VeiculoTeste.class
 })
 public class TesteSuite {
     

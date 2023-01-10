@@ -29,14 +29,14 @@ public class VeiculoTeste extends Teste {
         em.persist(veiculo);
         em.flush();
         
-        Assert.assertNotNull(veiculo.getPlaca());
+        Assert.assertNotNull(veiculo.getId());
     }
     
     public Veiculo criarVeiculo() {
         
         Veiculo veiculo = new Veiculo();
 
-        veiculo.setPlaca("PFU1G29");
+        //veiculo.setId("PFU1G29");
         veiculo.setTipo_veiculo("Fox");
         veiculo.setFabricante("Volkswagen");
         veiculo.setModelo("4 portas");
@@ -45,7 +45,7 @@ public class VeiculoTeste extends Teste {
         veiculo.setProprietario("Ciclano da silva");
         veiculo.setCor("Preto");
         Condutor condutor = criarCondutor();
-        veiculo.setCondutor(Arrays.asList(condutor));
+        veiculo.adicionarCondutor(condutor);
         
         return veiculo;
     }

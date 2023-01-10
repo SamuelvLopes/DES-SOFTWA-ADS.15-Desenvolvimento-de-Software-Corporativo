@@ -4,6 +4,7 @@
  */
 package detran.jpa;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -28,15 +29,15 @@ public class Multa implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false,cascade = CascadeType.PERSIST )
     @JoinColumn(name = "ID_VEICULO_PLACA", referencedColumnName = "ID")
     private Veiculo veiculo;
     
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "ID_CONDUTOR", referencedColumnName = "ID")
     private Condutor condutor;
     
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false,cascade = CascadeType.PERSIST)
     @JoinColumn(name = "ID_AUTUADOR", referencedColumnName = "ID")
     private Autuador autuador;
     
